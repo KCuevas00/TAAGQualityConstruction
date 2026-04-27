@@ -77,7 +77,9 @@ const lbNext = $('#taag-lb-next');
 const projectTiles = Array.from(document.querySelectorAll('.projects-grid figure'));
 let galleryItems = projectTiles.map((fig) => {
   const img = fig.querySelector('img');
-  return { src: img ? (img.currentSrc || img.src) : '', title: fig.querySelector('figcaption')?.textContent || '' };
+  const src = img ? (img.dataset?.src || img.currentSrc || img.src) : '';
+  const title = fig.querySelector('figcaption')?.textContent?.trim() || img?.alt || '';
+  return { src: src || '', title };
 });
 
 function openLightbox(index) {
@@ -124,7 +126,7 @@ document.addEventListener('keydown', (e) => {
 // HERO: simple background cycle if hero element present and assets exist
 const heroSection = document.querySelector('.hero');
 if (heroSection) {
-  const heroImages = galleryItems.map(i => `url('${i.src}')`).filter(Boolean);
+  const heroImages = galleryItems.map(i => i.src).filter(Boolean).map(s => `url('${new URL(s, location.href).href}')`);
   if (heroImages.length) {
     let hi = 0;
     const HERO_DURATION = 7000;

@@ -719,8 +719,8 @@ a{ color: inherit; }
 .service-grid{
   margin-top: 22px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
 }
 .service-card{
   transition: all 0.25s ease;
@@ -729,6 +729,16 @@ a{ color: inherit; }
   background: var(--surface);
   padding: 16px;
   box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+}
+.service-card img{
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  margin-bottom: 14px;
+  display: block;
 }
 
 .service-card:hover {
@@ -739,16 +749,71 @@ a{ color: inherit; }
   transform: translateY(-4px);
 }
 
-.service-icon{
-  width: 42px;
-  height: 42px;
-  border-radius: 14px;
-  border: 1px solid var(--stroke);
-  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 14%, white 86%), rgba(255,255,255,0.92));
-  display: grid;
-  place-items: center;
+/* Projects gallery grid */
+.projects{
+  padding: 72px 0;
+}
+.projects h3{
+  font-size: clamp(1.75rem, 4vw, 2.2rem);
   margin-bottom: 12px;
-  color: rgba(11,26,18,0.86);
+}
+.projects-grid{
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  align-items: stretch;
+}
+.projects-grid figure{
+  grid-column: auto;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: rgba(255,255,255,0.86);
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 18px 55px rgba(11,26,18,0.12);
+  transition: transform 180ms ease, border-color 180ms ease;
+  display: block;
+}
+.projects-grid figure img{
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.95) contrast(1.02);
+  transition: transform 240ms ease;
+}
+.projects-grid figure:hover{
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--accent) 34%, rgba(255,255,255,0.14));
+}
+.projects-grid figure:hover img{
+  transform: scale(1.05);
+}
+.projects-grid figcaption{
+  padding: 12px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  background: rgba(255,255,255,0.02);
+}
+
+.service-icon{
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  border: none;
+  background: transparent;
+  display: block;
+  margin-bottom: 12px;
+  color: var(--brick);
+  font-size: 32px;
+  line-height: 1;
+  text-align: left;
 }
 .service-icon svg{ width: 24px; height: 24px; opacity: 0.95; stroke: currentColor; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 .service-card h3{ margin: 0 0 8px; font-size: 18px; }
@@ -1241,9 +1306,19 @@ a{ color: inherit; }
   font-size: 20px;
   color: var(--text);
 }
-.contact-form label{ display: block; margin-bottom: 14px; }
-.contact-form label:last-of-type{ margin-bottom: 0; }
-.contact-form span{ display: block; font-weight: 700; font-size: 13px; margin-bottom: 6px; color: var(--text); }
+.contact-form-shell label{ 
+  display: block; 
+  margin-bottom: 16px; 
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text);
+}
+.contact-form-shell label:last-of-type{ margin-bottom: 20px; }
+.contact-form-shell input,
+.contact-form-shell textarea{
+  font-size: 14px;
+  line-height: 1.5;
+}
 .form-row{
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1298,6 +1373,14 @@ a{ color: inherit; }
   margin-bottom: 20px;
   color: var(--muted);
   line-height: 1.55;
+}
+
+.contact{
+  padding: 72px 0;
+}
+.contact > h3{
+  font-size: clamp(1.75rem, 4vw, 2.2rem);
+  margin-bottom: 12px;
 }
 
 .contact-info {
@@ -1548,7 +1631,48 @@ input:focus, select:focus, textarea:focus{
   transform: translateY(0);
 }
 
-/* Light theme polish (keeps green accents) */
+/* Base section padding */
+.section{
+  padding: 72px 0;
+}
+section#about,
+section.about,
+section.testimonials{
+  padding: 72px 0;
+}
+
+section h3{
+  font-size: clamp(1.75rem, 4vw, 2.2rem);
+  margin-bottom: 16px;
+  font-weight: 800;
+}
+
+blockquote{
+  margin: 20px 0;
+  padding: 18px 24px;
+  border-left: 4px solid var(--brick);
+  background: rgba(139,46,27,0.05);
+  font-style: italic;
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.6;
+}
+blockquote::before{
+  content: "";
+}
+blockquote::after{
+  content: "";
+}
+
+/* Lead paragraph styling */
+.lead{
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin-bottom: 28px;
+  max-width: 65ch;
+}
+
 .section-alt{ background: linear-gradient(180deg, rgba(255,255,255,0.84), rgba(255,255,255,0.62)); }
 
 
@@ -1673,6 +1797,8 @@ input, select, textarea{
   .footer-grid{ grid-template-columns: 1fr; }
   .footer-bottom{ flex-direction: column; align-items: start; }
   .map-card{ min-height: 380px; }
+  .contact-grid{ grid-template-columns: 1fr; gap: 18px; }
+  .projects-grid{ grid-template-columns: 1fr; }
 }
 
 .header-call-number {
