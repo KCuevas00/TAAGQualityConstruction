@@ -11,17 +11,17 @@
 </head>
 <body>
   <header class="site-header">
-    <div class="container">
+    <div class="container header-inner">
       <div class="brand">
-        <a class="brand-mark" href="#">
-          <img class="brand-logo" src="assets/photos:videos/logo.jpeg" alt="TAAG Quality Construction logo" />
+        <a class="brand-mark" href="#" aria-label="TAAG Quality Construction home">
+          <img class="brand-logo" src="/images/logo.jpg" alt="TAAG Quality Construction logo" />
         </a>
         <div class="brand-text">
           <h1 class="brand-name">TAAG Quality Construction Inc.</h1>
           <span class="brand-tag">Solid Foundations. Lasting Craftsmanship.</span>
         </div>
       </div>
-      <nav id="site-nav" class="main-nav" aria-label="Main navigation">
+      <nav id="site-nav" class="main-nav site-nav" aria-label="Main navigation">
         <ul>
           <li><a href="#">Home</a></li>
           <li><a href="#about">About</a></li>
@@ -43,13 +43,26 @@
 
   <main>
     <!-- Hero -->
-    <section class="hero">
-      <img src="https://via.placeholder.com/1600x700/8B2E1B/C37E3E?text=TAAG+Hero+Image+Placeholder" alt="TAAG hero - concrete/masonry project" />
-      <div class="hero-content container">
-        <h2>Concrete & Masonry Solutions Built to Last</h2>
-        <p>From durable driveways and patios to structural foundations and masonry repairs — craft and reliability on every job.</p>
-  <a class="btn btn-primary" href="#contact">Get a Free Estimate</a>
-  <a class="btn btn-ghost" href="#projects">View Projects</a>
+    <section class="hero" style="--hero-photo: url('/images/hero.jpg')">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <div class="hero-copy container">
+          <h2 class="hero-title">Concrete & Masonry Solutions Built to Last</h2>
+          <p class="hero-subtitle">From durable driveways and patios to structural foundations and masonry repairs — craft and reliability on every job.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">Get a Free Estimate</a>
+            <a class="btn btn-ghost" href="#projects">View Projects</a>
+          </div>
+        </div>
+        <div class="hero-spotlight">
+          <div class="logo-badge">
+            <img class="hero-logo" src="/images/services/lawn-care.jpg" alt="Sample project - stamped concrete patio" />
+          </div>
+          <div class="spotlight-card">
+            <h4 class="spotlight-title">Trusted by local homeowners</h4>
+            <p class="spotlight-text">Quality workmanship on every site — foundations, driveways, patios, retaining walls.</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -58,35 +71,35 @@
       <h3>Our Services</h3>
       <p class="lead">Professional concrete and masonry services. Replace these placeholders with your short service descriptions.</p>
       <div class="service-grid">
-        <article class="service">
-          <img src="https://via.placeholder.com/400x250?text=Concrete+Pouring" alt="Concrete pouring" />
+        <article class="service service-card">
+          <img src="/images/services/foundation.jpg" alt="Concrete pouring foundation work" />
           <h4>Concrete Pouring</h4>
-          <p>Residential and commercial concrete pours — driveways, slabs, sidewalks. [Service details placeholder]</p>
+          <p>Residential and commercial concrete pours — driveways, slabs, sidewalks.</p>
         </article>
-        <article class="service">
-          <img src="https://via.placeholder.com/400x250?text=Masonry+Repair" alt="Masonry repair" />
+        <article class="service service-card">
+          <img src="/images/services/masonry-repair.jpg" alt="Masonry repair and restoration" />
           <h4>Masonry Repair & Restoration</h4>
-          <p>Repair of brick, block, stone and mortar — restoring structural integrity and appearance. [Placeholder]</p>
+          <p>Repair of brick, block, stone and mortar — restoring structural integrity and appearance.</p>
         </article>
-        <article class="service">
-          <img src="https://via.placeholder.com/400x250?text=Decorative+Concrete" alt="Decorative concrete" />
+        <article class="service service-card">
+          <img src="/images/services/decorative.jpg" alt="Decorative stamped concrete" />
           <h4>Decorative & Stamped Concrete</h4>
-          <p>Stamped, exposed aggregate, stained or colored concrete finishes. [Placeholder]</p>
+          <p>Stamped, exposed aggregate, stained or colored concrete finishes.</p>
         </article>
-        <article class="service">
-          <img src="https://via.placeholder.com/400x250?text=Retaining+Walls" alt="Retaining walls" />
+        <article class="service service-card">
+          <img src="/images/services/retaining-walls.jpg" alt="Retaining walls and hardscapes" />
           <h4>Retaining Walls & Hardscapes</h4>
-          <p>Retaining walls, steps, and other hardscape masonry solutions. [Placeholder]</p>
+          <p>Retaining walls, steps, and other hardscape masonry solutions.</p>
         </article>
-        <article class="service">
-          <img src="https://via.placeholder.com/400x250?text=Driveways+%26+Patios" alt="Driveways and patios" />
+        <article class="service service-card">
+          <img src="/images/services/driveway.jpg" alt="Driveways and patios project" />
           <h4>Driveways & Patios</h4>
-          <p>Design and installation of long-lasting driveways and outdoor living surfaces. [Placeholder]</p>
+          <p>Design and installation of long-lasting driveways and outdoor living surfaces.</p>
         </article>
-        <article class="service">
-          <img src="https://via.placeholder.com/400x250?text=Foundations" alt="Foundations" />
+        <article class="service service-card">
+          <img src="/images/services/foundations.jpg" alt="Foundations and structural work" />
           <h4>Foundations & Structural Work</h4>
-          <p>Foundation repair and new foundation construction. [Placeholder]</p>
+          <p>Foundation repair and new foundation construction.</p>
         </article>
       </div>
     </section>
@@ -97,16 +110,16 @@
       <p class="lead">A selection of recent concrete and masonry work. Replace images and project descriptions with real content.</p>
       <div class="projects-grid">
         <figure>
-          <img src="https://via.placeholder.com/600x400?text=Project+1" alt="Project 1 - driveway" />
-          <figcaption>Project 1 — Concrete driveway restoration (placeholder)</figcaption>
+          <img src="/images/projects/project-1.jpg" alt="Project 1 - driveway restoration" />
+          <figcaption>Project 1 — Concrete driveway restoration</figcaption>
         </figure>
         <figure>
-          <img src="https://via.placeholder.com/600x400?text=Project+2" alt="Project 2 - patio" />
-          <figcaption>Project 2 — Decorative patio installation (placeholder)</figcaption>
+          <img src="/images/projects/project-2.jpg" alt="Project 2 - decorative patio" />
+          <figcaption>Project 2 — Decorative patio installation</figcaption>
         </figure>
         <figure>
-          <img src="https://via.placeholder.com/600x400?text=Project+3" alt="Project 3 - retaining wall" />
-          <figcaption>Project 3 — Retaining wall & masonry repair (placeholder)</figcaption>
+          <img src="/images/projects/project-3.jpg" alt="Project 3 - retaining wall" />
+          <figcaption>Project 3 — Retaining wall & masonry repair</figcaption>
         </figure>
       </div>
     </section>
