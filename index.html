@@ -12,21 +12,19 @@
 <body>
   <header class="site-header">
     <div class="container header-inner">
-      <div class="brand">
-        <a class="brand-mark" href="#" aria-label="TAAG Quality Construction home">
-          <img class="brand-logo" src="assets/photos:videos/logo.jpeg" alt="TAAG Quality Construction logo" />
-        </a>
-        <div class="brand-text">
-          <h1 class="brand-name">TAAG Quality Construction Inc.</h1>
-          <span class="brand-tag">Solid Foundations. Lasting Craftsmanship.</span>
-        </div>
+      <a class="header-logo" href="#" aria-label="TAAG Quality Construction home">
+        <img class="header-logo-img" src="assets/photos:videos/logo.jpeg" alt="TAAG Quality Construction logo" />
+      </a>
+      <div class="header-brand">
+        <h1 class="brand-name">TAAG Quality Construction Inc.</h1>
+        <span class="brand-tag">Solid Foundations. Lasting Craftsmanship.</span>
       </div>
       <nav id="site-nav" class="main-nav site-nav" aria-label="Main navigation">
         <ul>
           <li><a href="#">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#services">Services</a></li>
-          <li><a href="#projects">Projects</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -35,8 +33,10 @@
         <span class="nav-toggle-bar"></span>
         <span class="nav-toggle-bar"></span>
       </button>
-      <div class="header-phone" role="contentinfo">
-        <span class="header-phone-label">Call</span>
+    </div>
+    <div class="header-phone-bar">
+      <div class="container">
+        <span class="header-phone-label">Call:</span>
         <a class="header-phone-number" href="tel:5555550123">(555) 555-0123</a>
       </div>
     </div>
@@ -74,40 +74,37 @@
       <div class="service-grid">
         <article class="service service-card">
           <div class="service-icon">🏗️</div>
-          <img src="assets/photos:videos/047C863E-8887-49DD-B92C-3899C22ED1B1_4_5005_c.jpeg" alt="Concrete pouring foundation work" />
           <h4>Concrete Pouring</h4>
           <p>Residential and commercial concrete pours — driveways, slabs, sidewalks.</p>
         </article>
         <article class="service service-card">
           <div class="service-icon">🧱</div>
-          <img src="assets/photos:videos/0A958812-B35C-49CA-8A47-5FAF4564EE3E_4_5005_c.jpeg" alt="Masonry repair and restoration" />
           <h4>Masonry Repair & Restoration</h4>
           <p>Repair of brick, block, stone and mortar — restoring structural integrity and appearance.</p>
         </article>
         <article class="service service-card">
           <div class="service-icon">✨</div>
-          <img src="assets/photos:videos/0CBB70DE-9D6C-4F6E-A44F-16B1C58B5206_4_5005_c.jpeg" alt="Decorative stamped concrete" />
           <h4>Decorative & Stamped Concrete</h4>
           <p>Stamped, exposed aggregate, stained or colored concrete finishes.</p>
         </article>
         <article class="service service-card">
           <div class="service-icon">🛡️</div>
-          <img src="assets/photos:videos/0E6F05F6-20D2-42A9-82AF-754FFBAC037C_4_5005_c.jpeg" alt="Retaining walls and hardscapes" />
           <h4>Retaining Walls & Hardscapes</h4>
           <p>Retaining walls, steps, and other hardscape masonry solutions.</p>
         </article>
         <article class="service service-card">
           <div class="service-icon">🛣️</div>
-          <img src="assets/photos:videos/114FFD2F-EAAE-4566-8E1F-076756CB023F_4_5005_c.jpeg" alt="Driveways and patios project" />
           <h4>Driveways & Patios</h4>
           <p>Design and installation of long-lasting driveways and outdoor living surfaces.</p>
         </article>
         <article class="service service-card">
           <div class="service-icon">🏢</div>
-          <img src="assets/photos:videos/131CA7AF-3450-4D33-8D60-EAECFFCB2C0C_4_5005_c.jpeg" alt="Foundations and structural work" />
           <h4>Foundations & Structural Work</h4>
           <p>Foundation repair and new foundation construction.</p>
         </article>
+      </div>
+      <div class="services-gallery-cta">
+        <a class="btn btn-primary" href="gallery.html">View Full Gallery</a>
       </div>
     </section>
 
@@ -145,30 +142,32 @@
 
     <!-- About -->
     <section id="about" class="about container">
-      <h3>About TAAG Quality Construction Inc.</h3>
-      <p>TAAG Quality Construction Inc. is a family-owned concrete and masonry contractor serving the local community and surrounding region. We specialize in durable, code-compliant construction and repairs with a focus on attention to detail and client satisfaction.</p>
-      <ul>
-        <li>Licensed & insured — license information available upon request</li>
-        <li>Free estimates — call or email to schedule</li>
-        <li>Commercial and residential work</li>
-      </ul>
+      <div class="about-content">
+        <div class="about-logo-wrap">
+          <img class="about-logo" src="assets/photos:videos/logo.jpeg" alt="TAAG Quality Construction logo" />
+        </div>
+        <div class="about-text">
+          <h3>About TAAG Quality Construction Inc.</h3>
+          <p>TAAG Quality Construction Inc. is a family-owned concrete and masonry contractor serving the local community and surrounding region. We specialize in durable, code-compliant construction and repairs with a focus on attention to detail and client satisfaction.</p>
+          <ul>
+            <li>Licensed & insured — license information available upon request</li>
+            <li>Free estimates — call or email to schedule</li>
+            <li>Commercial and residential work</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
     <!-- Testimonials -->
     <section class="testimonials container">
-      <h3>What our clients say</h3>
-      <blockquote>
-        "TAAG rebuilt our driveway and did an excellent job. Professional crew and on-time."  J. Morales
-      </blockquote>
-      <blockquote>
-        "The masonry repair looks like new. Highly recommended."  S. Patel
-      </blockquote>
+      <h3>Client Reviews</h3>
+      <p class="lead">Client reviews coming soon</p>
     </section>
 
     <!-- Contact -->
     <section id="contact" class="contact container">
   <h3>Contact</h3>
-  <p>Request a free estimate or ask questions 12 we're happy to help — call, email, or submit the form below.</p>
+  <p>Request a free estimate or ask questions — we're happy to help. Call, email, or submit the form below.</p>
       <div class="contact-grid">
         <div class="contact-info">
           <h4>Get in touch</h4>
@@ -231,9 +230,6 @@
       <div class="footer-bottom">
         <div class="footer-copy">
           <small>© <span id="year">2026</span> TAAG Quality Construction Inc. — All rights reserved.</small>
-        </div>
-        <div class="footer-links">
-          <a href="https://example.com/privacy" class="footer-link" target="_blank">Privacy</a> · <a href="https://example.com/terms" class="footer-link" target="_blank">Terms</a>
         </div>
       </div>
     </div>
