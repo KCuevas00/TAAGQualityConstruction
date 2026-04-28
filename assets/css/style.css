@@ -189,6 +189,22 @@ a{ color: inherit; }
   font-size: 12px;
   margin: 0 4px;
 }
+.header-phone-name{
+  font-size: 11px;
+  color: rgba(255,255,255,0.55);
+  font-weight: 500;
+  margin-left: 2px;
+  margin-right: 6px;
+}
+.header-phone-es{
+  font-size: 11px;
+  color: var(--burnt);
+  font-weight: 600;
+  background: rgba(195,126,62,0.15);
+  padding: 2px 8px;
+  border-radius: 12px;
+  border: 1px solid rgba(195,126,62,0.25);
+}
 
 
 .nav-toggle{
