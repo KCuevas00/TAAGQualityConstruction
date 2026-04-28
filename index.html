@@ -80,11 +80,11 @@
       </div>
       <div class="hero-bottom-bar">
         <div class="hero-bottom-inner">
-          <a href="tel:7082592125" class="bottom-phone">(708) 259-2125</a>
+          <span class="bottom-text">Affordable Pricing</span>
           <span class="bottom-divider">|</span>
           <span class="bottom-text">Free Estimates</span>
           <span class="bottom-divider">|</span>
-          <span class="bottom-text">Serving Dolton, IL & nearby areas</span>
+          <span class="bottom-text">Serving Dolton, IL & Nearby Areas</span>
         </div>
       </div>
     </section>
@@ -250,26 +250,8 @@
         </div>
         <div class="contact-form-shell">
           <h4>Request an Estimate</h4>
-          <!-- Contact form (connect backend as needed) -->
-          <form action="#" method="post" onsubmit="event.preventDefault(); alert('Thank you for your interest! We will contact you shortly at the phone number or email provided.');">
-            <label>
-              Name
-              <input type="text" name="name" placeholder="Your name" required />
-            </label>
-            <label>
-              Phone
-              <input type="tel" name="phone" placeholder="(555) 555-0123" />
-            </label>
-            <label>
-              Email
-              <input type="email" name="email" placeholder="you@example.com" required />
-            </label>
-            <label>
-              Message
-              <textarea name="message" placeholder="Project details, location, timeline..." rows="4"></textarea>
-            </label>
-            <button type="submit" class="btn btn-primary">Send Request</button>
-          </form>
+          <p>Click below to open our quick estimate form. We'll get back to you within 24 hours.</p>
+          <button type="button" class="btn btn-primary btn-full" id="open-modal-btn">Request Free Estimate</button>
         </div>
       </div>
     </section>
@@ -309,9 +291,117 @@
     </div>
   </footer>
 
+  <!-- Contact Modal -->
+  <div id="contact-modal" class="modal">
+    <div id="modal-backdrop" class="modal-backdrop"></div>
+    <div class="modal-card">
+      <button type="button" id="close-modal" class="modal-close">✕</button>
+      <h4>Request Free Estimate</h4>
+      <form id="modal-contact-form">
+        <label>
+          Name <span class="required">*</span>
+          <input type="text" name="user_name" placeholder="Your name" required />
+        </label>
+        <label>
+          Phone <span class="required">*</span>
+          <input type="tel" name="user_phone" placeholder="(555) 555-0123" required />
+        </label>
+        <label>
+          Email
+          <input type="email" name="user_email" placeholder="you@example.com" />
+        </label>
+        <label>
+          Service Needed
+          <select name="service_type">
+            <option value="">Select a service...</option>
+            <option value="Concrete Pouring">Concrete Pouring</option>
+            <option value="Concrete Repair">Concrete Repair</option>
+            <option value="Stamped & Decorative">Stamped & Decorative</option>
+            <option value="Driveways & Sidewalks">Driveways & Sidewalks</option>
+            <option value="Patios & Outdoor Living">Patios & Outdoor Living</option>
+            <option value="Retaining Walls">Retaining Walls</option>
+            <option value="Brickwork & Tuckpointing">Brickwork & Tuckpointing</option>
+            <option value="Other">Other</option>
+          </select>
+        </label>
+        <label>
+          Project Details
+          <textarea name="message" placeholder="Tell us about your project..." rows="3"></textarea>
+        </label>
+        <button type="submit" class="btn btn-primary btn-full">Send Request</button>
+      </form>
+    </div>
+  </div>
+
   <script>
     // small helper: set current year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Modal form functionality
+    const modal = document.getElementById('contact-modal');
+    const openModalBtn = document.getElementById('open-modal-btn');
+    const closeModalBtn = document.getElementById('close-modal');
+    const modalBackdrop = document.getElementById('modal-backdrop');
+    
+    function openModal() {
+      modal.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeModal() {
+      modal.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+    
+    openModalBtn.addEventListener('click', openModal);
+    closeModalBtn.addEventListener('click', closeModal);
+    modalBackdrop.addEventListener('click', closeModal);
+    
+    // Close modal on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+        closeModal();
+      }
+    });
+    
+    // Modal form submission
+    document.getElementById('modal-contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const form = this;
+      const btn = form.querySelector('button[type="submit"]');
+      const originalText = btn.textContent;
+      
+      // Disable button during submission
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+      
+      // EmailJS configuration placeholders
+      const EMAILJS_CONFIG = {
+        SERVICE_ID: 'YOUR_SERVICE_ID',
+        TEMPLATE_ID: 'YOUR_TEMPLATE_ID',
+        PUBLIC_KEY: 'YOUR_PUBLIC_KEY'
+      };
+      
+      // Collect form data
+      const formData = {
+        user_name: form.user_name.value,
+        user_phone: form.user_phone.value,
+        user_email: form.user_email.value,
+        service_type: form.service_type.value,
+        message: form.message.value
+      };
+      
+      // Simulate submission (replace with actual EmailJS when ready)
+      // emailjs.send(EMAILJS_CONFIG.SERVICE_ID, EMAILJS_CONFIG.TEMPLATE_ID, formData, EMAILJS_CONFIG.PUBLIC_KEY)
+      
+      setTimeout(() => {
+        form.reset();
+        btn.disabled = false;
+        btn.textContent = originalText;
+        closeModal();
+      }, 1000);
+    });
   </script>
   <script src="assets/js/main.js" defer></script>
 </body>

@@ -57,12 +57,9 @@ if (!lightbox) {
     <div class="lightbox-panel">
       <button class="lightbox-close" data-lb-close="true">✕</button>
       <img id="taag-lightbox-img" class="lightbox-img" src="" alt="" />
-      <div class="lightbox-meta">
-        <div id="taag-lightbox-title" style="display: block; color: #ffffff; font-size: 14px; font-weight: 500;"></div>
-        <div class="lightbox-nav">
-          <button id="taag-lb-prev" aria-label="Previous">◀</button>
-          <button id="taag-lb-next" aria-label="Next">▶</button>
-        </div>
+      <div class="lightbox-nav">
+        <button id="taag-lb-prev" aria-label="Previous">◀</button>
+        <button id="taag-lb-next" aria-label="Next">▶</button>
       </div>
     </div>
   `;
@@ -70,7 +67,6 @@ if (!lightbox) {
 }
 
 const lbImg = $('#taag-lightbox-img');
-const lbTitle = $('#taag-lightbox-title');
 const lbPrev = $('#taag-lb-prev');
 const lbNext = $('#taag-lb-next');
 
@@ -78,16 +74,14 @@ const projectTiles = Array.from(document.querySelectorAll('.projects-grid figure
 let galleryItems = projectTiles.map((fig) => {
   const img = fig.querySelector('img');
   const src = img ? (img.dataset?.src || img.currentSrc || img.src) : '';
-  const title = fig.querySelector('figcaption')?.textContent?.trim() || fig.dataset?.caption || img?.alt || '';
-  return { src: src || '', title };
+  return { src: src || '' };
 });
 
 function openLightbox(index) {
   const item = galleryItems[index];
   if (!item) return;
   lbImg.src = new URL(item.src, location.href).href;
-  lbImg.alt = item.title || '';
-  if (lbTitle) lbTitle.textContent = item.title || '';
+  lbImg.alt = '';
   lightbox.classList.add('is-open');
 }
 
