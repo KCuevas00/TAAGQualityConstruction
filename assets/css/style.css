@@ -155,7 +155,6 @@ a{ color: inherit; }
   margin-top: 3px;
   letter-spacing: 0.08em;
   white-space: nowrap;
-  text-transform: uppercase;
   font-weight: 500;
 }
 .header-phone-bar{
@@ -2383,111 +2382,143 @@ html, body {
   max-width: 100vw;
 }
 
-/* Mobile phone bar - hidden by default (desktop) */
-.mobile-phone-bar {
+/* Mobile phone section - hidden on desktop */
+.hero-phones-mobile {
   display: none;
 }
 
-/* MOBILE: Hide header phone bar and show sticky bottom bar instead */
+/* Mobile: Hide header phone bar and show in hero instead */
 @media (max-width: 720px) {
-  /* Hide the header phone bar completely on mobile */
+  /* Header tagline - break into two lines */
+  .brand-tag {
+    font-size: 0 !important;
+    line-height: 1.6;
+    display: block !important;
+  }
+  
+  .brand-tag::before {
+    content: "Solid Foundations.";
+    font-size: 11px;
+    display: block;
+  }
+  
+  .brand-tag::after {
+    content: "Lasting Craftsmanship.";
+    font-size: 11px;
+    display: block;
+  }
+  
+  /* Hide the header phone bar on mobile */
   .header-phone-bar {
     display: none;
   }
   
-  /* Add padding to body to account for sticky bottom bar */
-  body {
-    padding-bottom: 60px;
-  }
-  
-  /* Sticky bottom phone bar */
-  .mobile-phone-bar {
+  /* Mobile phone section in hero */
+  .hero-phones-mobile {
     display: flex;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    background: rgba(20,16,14,0.98);
-    backdrop-filter: blur(8px);
-    border-top: 1px solid rgba(139,46,27,0.30);
-    padding: 10px 16px;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+    padding: 16px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 12px;
+    backdrop-filter: blur(4px);
   }
   
-  .mobile-phone-bar a {
+  .hero-phones-mobile a {
     color: #ffffff;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 700;
     display: flex;
     align-items: center;
-    gap: 6px;
-  }
-  
-  .mobile-phone-bar a span {
-    font-size: 11px;
-    font-weight: 500;
-    color: rgba(255,255,255,0.55);
-  }
-  
-  .mobile-phone-divider {
-    color: rgba(255,255,255,0.3);
-    font-size: 12px;
-  }
-  
-  .mobile-es {
-    position: absolute;
-    top: -24px;
-    right: 12px;
-    background: var(--burnt);
-    color: #fff;
-    font-size: 10px;
-    font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 12px;
-    border: 1px solid rgba(195,126,62,0.40);
-  }
-}
-
-/* Hero trust badge mobile fix */
-@media (max-width: 720px) {
-  .hero-trust-badge {
-    flex-wrap: wrap;
     justify-content: center;
+    gap: 8px;
+    padding: 8px;
+    border-radius: 8px;
+    background: rgba(139,46,27,0.3);
+    border: 1px solid rgba(139,46,27,0.5);
+  }
+  
+  .hero-phones-mobile a span {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.75);
+  }
+  
+  .hero-phones-es {
     text-align: center;
-    max-width: 100%;
-    min-height: auto;
-    height: auto;
-    margin-top: 16px;
-    padding: 8px 0;
-  }
-  .trust-text {
-    font-size: 12px;
-    line-height: 1.5;
-    display: inline-block;
-    padding: 4px 0;
-  }
-  .trust-star {
     font-size: 14px;
-    line-height: 1.5;
-    padding: 4px 0;
+    color: var(--burnt);
+    font-weight: 600;
+    margin-top: 4px;
+  }
+  
+  /* Left align the About section list */
+  .about-text ul {
+    text-align: left;
+    padding-left: 20px;
+  }
+  
+  .about-text li {
+    text-align: left;
+  }
+  
+  /* Hide trust badge and bottom bar on mobile */
+  .hero-trust-badge,
+  .hero-bottom-bar {
+    display: none;
+  }
+  
+  /* Mobile hero actions: center Get Quote */
+  .hero-actions {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .hero-actions .btn-primary {
+    width: 100%;
+    max-width: 280px;
   }
 }
 
-/* Fix for very small screens */
-@media (max-width: 380px) {
-  .hero-trust-badge {
-    flex-direction: column;
-    gap: 6px;
-    margin-top: 12px;
-    padding: 6px 0;
+/* Hide Call Now button completely */
+.hero-actions .btn-secondary {
+  display: none;
+}
+
+/* Services toggle button - hidden on desktop */
+.services-toggle {
+  display: none;
+}
+
+/* Mobile: Show only first 4 services, rest hidden until expanded */
+@media (max-width: 720px) {
+  .services h3,
+  .services .lead {
+    text-align: center;
   }
-  .trust-text {
-    line-height: 1.5;
-    font-size: 11px;
+  
+  .services-toggle {
+    display: flex;
+    margin: 20px auto 0;
+  }
+  
+  .service-grid {
+    max-height: 520px; /* Show ~4 cards */
+    overflow: hidden;
+    transition: max-height 400ms ease;
+  }
+  
+  .service-grid.is-expanded {
+    max-height: 2000px; /* Enough for all cards */
+  }
+  
+  .service-grid.is-expanded + .services-toggle {
+    display: none; /* Hide button when expanded */
   }
 }
+
 

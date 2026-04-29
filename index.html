@@ -71,6 +71,13 @@
             <span class="trust-star">★</span>
             <span class="trust-text">Trusted by Local Homeowners</span>
           </div>
+          
+          <!-- Mobile-only phone numbers in hero -->
+          <div class="hero-phones-mobile">
+            <a href="tel:7082592125">(708) 259-2125 <span>(Federico)</span></a>
+            <a href="tel:7086908026">(708) 690-8026 <span>(Giovanni)</span></a>
+            <span class="hero-phones-es">Se Habla Español</span>
+          </div>
         </div>
         <div class="hero-logo-standalone">
           <div class="hero-logo-wrap-large">
@@ -93,7 +100,7 @@
     <section id="services" class="services container">
       <h3>Our Services</h3>
       <p class="lead">Comprehensive concrete and masonry services for homeowners and businesses throughout the Chicagoland area.</p>
-      <div class="service-grid">
+      <div class="service-grid" id="service-grid">
         <article class="service-card">
           <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M2 12h20M12 2v20"/></svg></div>
           <h4>Concrete Pouring</h4>
@@ -155,6 +162,9 @@
           <p>Safe demolition and removal of old concrete, plus surface preparation.</p>
         </article>
       </div>
+      <button type="button" class="btn btn-ghost services-toggle" id="services-toggle" aria-expanded="false">
+        View All Services
+      </button>
     </section>
 
     <!-- Projects / Gallery -->
@@ -402,15 +412,18 @@
         closeModal();
       }, 1000);
     });
+    
+    // Services toggle for mobile
+    const servicesToggle = document.getElementById('services-toggle');
+    const serviceGrid = document.getElementById('service-grid');
+    
+    if (servicesToggle && serviceGrid) {
+      servicesToggle.addEventListener('click', function() {
+        serviceGrid.classList.add('is-expanded');
+        this.setAttribute('aria-expanded', 'true');
+      });
+    }
   </script>
   <script src="assets/js/main.js" defer></script>
-  
-  <!-- Mobile sticky phone bar (shows only on mobile) -->
-  <div class="mobile-phone-bar">
-    <span class="mobile-es">Se Habla Español</span>
-    <a href="tel:7082592125">(708) 259-2125 <span>(Federico)</span></a>
-    <span class="mobile-phone-divider">|</span>
-    <a href="tel:7086908026">(708) 690-8026 <span>(Giovanni)</span></a>
-  </div>
 </body>
 </html>
