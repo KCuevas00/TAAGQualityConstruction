@@ -2422,7 +2422,6 @@ blockquote::after{
 .about-photo,
 .about-badge,
 .service-card,
-.services-cta,
 .filter,
 .gallery-tile,
 .area-note,
@@ -2433,6 +2432,12 @@ blockquote::after{
   background: var(--surface) !important;
   color: var(--text);
   box-shadow: var(--shadow);
+}
+
+.services-cta{
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 .service-details{ border-top-color: var(--stroke) !important; }
