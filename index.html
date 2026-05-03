@@ -34,7 +34,7 @@
         </ul>
       </nav>
       <div class="header-social">
-        <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+        <a href="https://www.facebook.com/profile.php?id=61588879875339" target="_blank" rel="noopener" aria-label="Facebook">
           <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
         </a>
       </div>
@@ -64,7 +64,7 @@
       <div class="hero-inner">
         <div class="hero-content">
           <h1 class="hero-title">Quality Concrete & Masonry for Local Homes</h1>
-          <p class="hero-subtitle">Driveways, patios, foundations, and masonry work for homeowners and businesses throughout Dolton and the Chicagoland area. Family-owned. Free estimates.</p>
+          <p class="hero-subtitle">Driveways, patios, foundations, and masonry work for homeowners and businesses throughout Dolton and the Chicagoland area. Family Owned. Free estimates.</p>
           <div class="hero-actions">
             <button type="button" class="btn btn-primary" onclick="openModal()">Get a Free Quote</button>
             <a class="btn btn-secondary" href="tel:7082592125">Call Now</a>
@@ -89,7 +89,7 @@
       </div>
       <div class="hero-bottom-bar">
         <div class="hero-bottom-inner">
-          <span class="bottom-text">Affordable Pricing</span>
+          <span class="bottom-text">Competitive Pricing</span>
           <span class="bottom-divider">|</span>
           <span class="bottom-text">Free Estimates</span>
           <span class="bottom-divider">|</span>
@@ -207,11 +207,11 @@
         </div>
         <div class="about-text">
           <h3>About TAAG Quality Construction</h3>
-          <p>Family-owned and operated since day one. We bring over 25+ years of hands-on experience to every concrete and masonry project we touch.</p>
+          <p>Family Owned and operated since day one. We bring over 25+ years of hands-on experience to every concrete and masonry project we touch.</p>
           <p>Our focus is simple: quality work that lasts, clear communication throughout, and treating every job like we're working on our own home. No shortcuts, no surprises — just reliable craftsmanship you can count on.</p>
           <p>Licensed, insured, and proud to serve homeowners and businesses across the Chicagoland area.</p>
           <ul>
-            <li>Family-owned & operated</li>
+            <li>Family Owned & operated</li>
             <li>25+ years experience</li>
             <li>Licensed & insured</li>
             <li>Free estimates</li>
@@ -224,7 +224,7 @@
     <!-- Contact -->
     <section id="contact" class="contact container">
   <h3>Contact</h3>
-  <p>Request a free estimate or ask questions — we're happy to help. Call, email, or submit the form below.</p>
+  <p>Request a free estimate. Call, email, or submit the form below.</p>
       <div class="contact-grid">
         <div class="contact-info">
           <h4>Request a Quote</h4>
@@ -287,19 +287,19 @@
       <form id="modal-contact-form">
         <label>
           Name <span class="required">*</span>
-          <input type="text" name="user_name" placeholder="Your name" required />
+          <input type="text" name="name" placeholder="Your name" required />
         </label>
         <label>
           Phone <span class="required">*</span>
-          <input type="tel" name="user_phone" placeholder="(555) 555-0123" required />
+          <input type="tel" name="phone" placeholder="(555) 555-0123" required />
         </label>
         <label>
           Email
-          <input type="email" name="user_email" placeholder="you@example.com" />
+          <input type="email" name="email" placeholder="you@example.com" />
         </label>
         <label>
           Service Needed
-          <select name="service_type">
+          <select name="service">
             <option value="">Select a service...</option>
             <option value="Concrete Pouring">Concrete Pouring</option>
             <option value="Concrete Repair">Concrete Repair</option>
@@ -313,6 +313,18 @@
           </select>
         </label>
         <label>
+          City <span class="required">*</span>
+          <input type="text" name="city" placeholder="City (required)" required />
+        </label>
+        <label>
+          State <span class="required">*</span>
+          <input type="text" name="state" placeholder="State (required)" required />
+        </label>
+        <label>
+          Street Address
+          <input type="text" name="address" placeholder="Street address (optional)" />
+        </label>
+        <label>
           Project Details
           <textarea name="message" placeholder="Tell us about your project..." rows="3"></textarea>
         </label>
@@ -322,18 +334,13 @@
   </div>
 
   <script>
-    // Initialize EmailJS (will work once configured)
-    (function() {
-      emailjs.init("YOUR_PUBLIC_KEY");
-    })();
-    
     // small helper: set current year
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // Initialize Lucide icons
     lucide.createIcons();
 
-    // Modal form functionality
+    // Modal form functionality (EmailJS handler is in main.js)
     const modal = document.getElementById('contact-modal');
     const openModalBtn = document.getElementById('open-modal-btn');
     const closeModalBtn = document.getElementById('close-modal');
@@ -360,58 +367,8 @@
       }
     });
     
-    // Modal form submission
-    document.getElementById('modal-contact-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const form = this;
-      const btn = form.querySelector('button[type="submit"]');
-      const originalText = btn.textContent;
-      
-      // Disable button during submission
-      btn.disabled = true;
-      btn.textContent = 'Sending...';
-      
-      // EmailJS configuration - UPDATE THESE VALUES
-      const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';
-      const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
-      const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';
-      
-      // Collect form data
-      const formData = {
-        user_name: form.user_name.value,
-        user_phone: form.user_phone.value,
-        user_email: form.user_email.value,
-        service_type: form.service_type.value,
-        message: form.message.value
-      };
-      
-      // Check if EmailJS is configured
-      if (EMAILJS_SERVICE_ID === 'YOUR_SERVICE_ID') {
-        alert('Please configure EmailJS with your actual SERVICE_ID, TEMPLATE_ID, and PUBLIC_KEY');
-        btn.disabled = false;
-        btn.textContent = originalText;
-        return;
-      }
-      
-      // Send email using EmailJS
-      emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, formData, EMAILJS_PUBLIC_KEY)
-        .then(function(response) {
-          btn.textContent = 'Sent!';
-          setTimeout(() => {
-            form.reset();
-            btn.disabled = false;
-            btn.textContent = originalText;
-            closeModal();
-            alert('Thank you! Your message has been sent.');
-          }, 1000);
-        }, function(error) {
-          btn.disabled = false;
-          btn.textContent = originalText;
-          alert('Sorry, there was an error sending your message. Please call us directly.');
-        });
-    });
-    
+    // Expose closeModal globally for EmailJS handler in main.js
+    window.closeModal = closeModal;
   </script>
   <script src="assets/js/main.js" defer></script>
 </body>

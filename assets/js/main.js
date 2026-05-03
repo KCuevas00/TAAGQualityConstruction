@@ -145,3 +145,80 @@ document.addEventListener('click', (e) => {
     navToggle?.setAttribute('aria-expanded', 'false');
   }
 });
+
+// SHARED EMAILJS INITIALIZATION (once only)
+(function() {
+  if (typeof emailjs !== 'undefined' && !window.__emailjsInitialized) {
+    emailjs.init("XJmuWRa8S__yxQ6h1");
+    window.__emailjsInitialized = true;
+  }
+})();
+
+// SHARED MODAL FORM HANDLER
+(function() {
+  const form = document.getElementById('modal-contact-form');
+  if (!form || form.dataset.emailjsBound) return;
+  form.dataset.emailjsBound = 'true';
+
+  const EMAILJS_SERVICE_ID = 'service_h2wo5bb';
+  const EMAILJS_TEMPLATE_ID = 'template_xkfoxlc';
+  let isSubmitting = false;
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    if (isSubmitting) return;
+
+    const btn = form.querySelector('button[type="submit"]');
+    if (!btn) return;
+
+    const originalText = btn.textContent;
+    isSubmitting = true;
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    // Debug: verify form data
+    const debugData = new FormData(form);
+    console.log('FormData entries:');
+    for (let [key, value] of debugData.entries()) {
+      console.log(key + ':', value);
+    }
+
+    emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form)
+      .then(function(response) {
+        // Build form data object for auto-reply
+        const formData = new FormData(form);
+        const data = {
+          name: formData.get('name') || '',
+          email: formData.get('email') || '',
+          phone: formData.get('phone') || '',
+          service: formData.get('service') || '',
+          city: formData.get('city') || '',
+          state: formData.get('state') || '',
+          address: formData.get('address') || '',
+          message: formData.get('message') || '',
+          time: new Date().toLocaleString()
+        };
+
+        // Send auto-reply to customer (non-blocking)
+        emailjs.send(EMAILJS_SERVICE_ID, 'template_gsorx3o', data)
+          .then(null, function(autoReplyError) {
+            console.log('Auto-reply failed (non-critical):', autoReplyError);
+          });
+
+        btn.textContent = 'Sent!';
+        setTimeout(() => {
+          form.reset();
+          btn.disabled = false;
+          btn.textContent = originalText;
+          isSubmitting = false;
+          if (typeof closeModal === 'function') closeModal();
+          alert('Thank you! Your message has been sent.');
+        }, 1000);
+      }, function(error) {
+        btn.disabled = false;
+        btn.textContent = originalText;
+        isSubmitting = false;
+        alert('Sorry, there was an error sending your message. Please call us directly.');
+      });
+  });
+})();
