@@ -2696,8 +2696,32 @@ html, body {
     text-align: left;
   }
   
-  /* Hide trust badge and bottom bar on mobile */
-  .hero-trust-badge,
+  /* Mobile trust badge - ensure text wraps properly */
+  .hero-trust-badge {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    max-width: 100%;
+    padding: 8px 12px;
+    gap: 6px;
+  }
+  
+  .hero-trust-badge .trust-text {
+    font-size: 12px;
+    line-height: 1.4;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+  }
+  
+  .hero-trust-badge .trust-star {
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  
+  /* Hide bottom bar on mobile */
   .hero-bottom-bar {
     display: none;
   }
@@ -2725,11 +2749,30 @@ html, body {
   display: none;
 }
 
-/* Mobile: center section headings */
+/* Mobile: center section headings and service grid collapse */
 @media (max-width: 720px) {
   .services h3,
   .services .lead {
     text-align: center;
+  }
+  
+  .services-toggle {
+    display: inline-flex;
+    margin: 20px auto 0;
+  }
+  
+  #service-grid {
+    max-height: 480px;
+    overflow: hidden;
+    transition: max-height 400ms ease;
+  }
+  
+  #service-grid.is-expanded {
+    max-height: 2000px;
+  }
+  
+  #service-grid.is-expanded + .services-toggle {
+    display: none;
   }
 }
 

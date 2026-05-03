@@ -9,6 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
   <!-- Styles are provided in the external stylesheet: assets/css/style.css -->
 </head>
@@ -102,38 +104,46 @@
       <p class="lead">Comprehensive concrete and masonry services for homeowners and businesses throughout the Chicagoland area.</p>
       <div class="service-grid" id="service-grid">
         <article class="service-card">
-          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6-6-6"/><rect x="2" y="3" width="20" height="6" rx="2"/><path d="M12 12v9"/><path d="M8 12v9"/><path d="M16 12v9"/></svg></div>
+          <div class="service-icon"><i data-lucide="hammer" width="28" height="28"></i></div>
           <h4>Concrete Installation</h4>
           <p>New concrete installation for driveways, slabs, sidewalks, and commercial flatwork.</p>
         </article>
         <article class="service-card">
-          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a2.41 2.41 0 0 0-3.4 0l-5.3 5.3a2.41 2.41 0 0 0 0 3.4l1.6 1.6a2.41 2.41 0 0 0 3.4 0l5.3-5.3a2.41 2.41 0 0 0 0-3.4l-1.6-1.6z"/><path d="m3 21 6-6M18 4l2-2"/></svg></div>
+          <div class="service-icon"><i data-lucide="wrench" width="28" height="28"></i></div>
           <h4>Concrete Repair</h4>
           <p>Crack repair, resurfacing, leveling, and restoration of damaged surfaces.</p>
         </article>
         <article class="service-card">
-          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M8 12l4-4 4 4"/><circle cx="12" cy="8" r="2"/><path d="M9 21h6"/></svg></div>
+          <div class="service-icon"><i data-lucide="sparkles" width="28" height="28"></i></div>
           <h4>Stamped and Decorative</h4>
           <p>Custom patterns, exposed aggregate, stained and colored concrete finishes.</p>
         </article>
         <article class="service-card">
-          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M3 10h18"/><path d="M3 7l9-4 9 4"/></svg></div>
+          <div class="service-icon"><i data-lucide="road" width="28" height="28"></i></div>
           <h4>Driveways and Sidewalks</h4>
           <p>Durable residential and commercial driveway and walkway installation.</p>
         </article>
         <article class="service-card">
-          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg></div>
+          <div class="service-icon"><i data-lucide="sun" width="28" height="28"></i></div>
           <h4>Patios and Outdoor Living</h4>
           <p>Custom patio design and installation for outdoor entertainment spaces.</p>
         </article>
         <article class="service-card">
-          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="6" height="6"/><rect x="14" y="4" width="6" height="6"/><rect x="4" y="14" width="6" height="6"/><rect x="14" y="14" width="6" height="6"/></svg></div>
+          <div class="service-icon"><i data-lucide="brick-wall" width="28" height="28"></i></div>
           <h4>Brickwork and Tuckpointing</h4>
           <p>Professional brick repair, mortar replacement, and masonry restoration.</p>
         </article>
+        <article class="service-card">
+          <div class="service-icon"><i data-lucide="flame" width="28" height="28"></i></div>
+          <h4>Chimney Services</h4>
+          <p>Tuckpointing, repair, demolition, and full chimney rebuilds using durable block construction.</p>
+        </article>
       </div>
+      <button type="button" class="btn btn-ghost services-toggle" id="services-toggle" aria-expanded="false">
+        View All Services
+      </button>
       <div class="services-cta">
-        <a class="btn btn-ghost" href="services.html">View All Services</a>
+        <a class="btn btn-primary" href="services.html">View All Services</a>
       </div>
     </section>
 
@@ -301,6 +311,7 @@
             <option value="Patios & Outdoor Living">Patios & Outdoor Living</option>
             <option value="Retaining Walls">Retaining Walls</option>
             <option value="Brickwork & Tuckpointing">Brickwork & Tuckpointing</option>
+            <option value="Chimney Services">Chimney Services</option>
             <option value="Other">Other</option>
           </select>
         </label>
@@ -314,8 +325,27 @@
   </div>
 
   <script>
+    // Initialize EmailJS (will work once configured)
+    (function() {
+      emailjs.init("YOUR_PUBLIC_KEY");
+    })();
+    
     // small helper: set current year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Initialize Lucide icons
+    lucide.createIcons();
+    
+    // Services toggle for mobile
+    const servicesToggle = document.getElementById('services-toggle');
+    const serviceGrid = document.getElementById('service-grid');
+    
+    if (servicesToggle && serviceGrid) {
+      servicesToggle.addEventListener('click', function() {
+        serviceGrid.classList.add('is-expanded');
+        this.setAttribute('aria-expanded', 'true');
+      });
+    }
 
     // Modal form functionality
     const modal = document.getElementById('contact-modal');
@@ -356,12 +386,10 @@
       btn.disabled = true;
       btn.textContent = 'Sending...';
       
-      // EmailJS configuration placeholders
-      const EMAILJS_CONFIG = {
-        SERVICE_ID: 'YOUR_SERVICE_ID',
-        TEMPLATE_ID: 'YOUR_TEMPLATE_ID',
-        PUBLIC_KEY: 'YOUR_PUBLIC_KEY'
-      };
+      // EmailJS configuration - UPDATE THESE VALUES
+      const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';
+      const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
+      const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';
       
       // Collect form data
       const formData = {
@@ -372,15 +400,30 @@
         message: form.message.value
       };
       
-      // Simulate submission (replace with actual EmailJS when ready)
-      // emailjs.send(EMAILJS_CONFIG.SERVICE_ID, EMAILJS_CONFIG.TEMPLATE_ID, formData, EMAILJS_CONFIG.PUBLIC_KEY)
-      
-      setTimeout(() => {
-        form.reset();
+      // Check if EmailJS is configured
+      if (EMAILJS_SERVICE_ID === 'YOUR_SERVICE_ID') {
+        alert('Please configure EmailJS with your actual SERVICE_ID, TEMPLATE_ID, and PUBLIC_KEY');
         btn.disabled = false;
         btn.textContent = originalText;
-        closeModal();
-      }, 1000);
+        return;
+      }
+      
+      // Send email using EmailJS
+      emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, formData, EMAILJS_PUBLIC_KEY)
+        .then(function(response) {
+          btn.textContent = 'Sent!';
+          setTimeout(() => {
+            form.reset();
+            btn.disabled = false;
+            btn.textContent = originalText;
+            closeModal();
+            alert('Thank you! Your message has been sent.');
+          }, 1000);
+        }, function(error) {
+          btn.disabled = false;
+          btn.textContent = originalText;
+          alert('Sorry, there was an error sending your message. Please call us directly.');
+        });
     });
     
   </script>
