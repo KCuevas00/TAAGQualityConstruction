@@ -63,7 +63,7 @@
       <div class="hero-bg" aria-hidden="true"></div>
       <div class="hero-inner">
         <div class="hero-content">
-          <h1 class="hero-title">Concrete & Masonry Built to Last</h1>
+          <h1 class="hero-title">Quality Concrete & Masonry for Local Homes</h1>
           <p class="hero-subtitle">Driveways, patios, foundations, and masonry work for homeowners and businesses throughout Dolton and the Chicagoland area. Family-owned. Free estimates.</p>
           <div class="hero-actions">
             <button type="button" class="btn btn-primary" onclick="openModal()">Get a Free Quote</button>
@@ -139,9 +139,6 @@
           <p>Tuckpointing, repair, demolition, and full chimney rebuilds using durable block construction.</p>
         </article>
       </div>
-      <button type="button" class="btn btn-ghost services-toggle" id="services-toggle" aria-expanded="false">
-        View All Services
-      </button>
       <div class="services-cta">
         <a class="btn btn-primary" href="services.html">View All Services</a>
       </div>
@@ -335,17 +332,6 @@
 
     // Initialize Lucide icons
     lucide.createIcons();
-    
-    // Services toggle for mobile
-    const servicesToggle = document.getElementById('services-toggle');
-    const serviceGrid = document.getElementById('service-grid');
-    
-    if (servicesToggle && serviceGrid) {
-      servicesToggle.addEventListener('click', function() {
-        serviceGrid.classList.add('is-expanded');
-        this.setAttribute('aria-expanded', 'true');
-      });
-    }
 
     // Modal form functionality
     const modal = document.getElementById('contact-modal');

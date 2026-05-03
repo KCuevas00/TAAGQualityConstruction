@@ -2762,17 +2762,8 @@ html, body {
   }
   
   #service-grid {
-    max-height: 480px;
-    overflow: hidden;
-    transition: max-height 400ms ease;
-  }
-  
-  #service-grid.is-expanded {
-    max-height: 2000px;
-  }
-  
-  #service-grid.is-expanded + .services-toggle {
-    display: none;
+    max-height: none;
+    overflow: visible;
   }
 }
 
